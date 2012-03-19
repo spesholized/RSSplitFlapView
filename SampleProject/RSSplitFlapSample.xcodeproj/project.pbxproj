@@ -1,0 +1,292 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A019D7EA14DA01DD00BCF612 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A019D7E914DA01DD00BCF612 /* UIKit.framework */; };
+		A019D7EC14DA01DD00BCF612 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A019D7EB14DA01DD00BCF612 /* Foundation.framework */; };
+		A019D7EE14DA01DD00BCF612 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A019D7ED14DA01DD00BCF612 /* CoreGraphics.framework */; };
+		A019D7F414DA01DD00BCF612 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A019D7F214DA01DD00BCF612 /* InfoPlist.strings */; };
+		A019D7F614DA01DD00BCF612 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A019D7F514DA01DD00BCF612 /* main.m */; };
+		A019D7FA14DA01DD00BCF612 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A019D7F914DA01DD00BCF612 /* AppDelegate.m */; };
+		A019D7FD14DA01DD00BCF612 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A019D7FC14DA01DD00BCF612 /* ViewController.m */; };
+		A019D80014DA01DD00BCF612 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A019D7FE14DA01DD00BCF612 /* ViewController.xib */; };
+		A019D80814DA022800BCF612 /* RSSplitFlapView.m in Sources */ = {isa = PBXBuildFile; fileRef = A019D80714DA022800BCF612 /* RSSplitFlapView.m */; };
+		A019D80E14DA03E500BCF612 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A019D80D14DA03E500BCF612 /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A019D7E514DA01DD00BCF612 /* RSSplitFlapSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSplitFlapSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A019D7E914DA01DD00BCF612 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A019D7EB14DA01DD00BCF612 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A019D7ED14DA01DD00BCF612 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A019D7F114DA01DD00BCF612 /* RSSplitFlapSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RSSplitFlapSample-Info.plist"; sourceTree = "<group>"; };
+		A019D7F314DA01DD00BCF612 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A019D7F514DA01DD00BCF612 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A019D7F714DA01DD00BCF612 /* RSSplitFlapSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSSplitFlapSample-Prefix.pch"; sourceTree = "<group>"; };
+		A019D7F814DA01DD00BCF612 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A019D7F914DA01DD00BCF612 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A019D7FB14DA01DD00BCF612 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A019D7FC14DA01DD00BCF612 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A019D7FF14DA01DD00BCF612 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		A019D80614DA022800BCF612 /* RSSplitFlapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSSplitFlapView.h; path = ../../RSSplitFlapView.h; sourceTree = "<group>"; };
+		A019D80714DA022800BCF612 /* RSSplitFlapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSSplitFlapView.m; path = ../../RSSplitFlapView.m; sourceTree = "<group>"; };
+		A019D80D14DA03E500BCF612 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A019D7E214DA01DD00BCF612 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A019D80E14DA03E500BCF612 /* QuartzCore.framework in Frameworks */,
+				A019D7EA14DA01DD00BCF612 /* UIKit.framework in Frameworks */,
+				A019D7EC14DA01DD00BCF612 /* Foundation.framework in Frameworks */,
+				A019D7EE14DA01DD00BCF612 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A019D7DA14DA01DD00BCF612 = {
+			isa = PBXGroup;
+			children = (
+				A019D80D14DA03E500BCF612 /* QuartzCore.framework */,
+				A019D7EF14DA01DD00BCF612 /* RSSplitFlapSample */,
+				A019D7E814DA01DD00BCF612 /* Frameworks */,
+				A019D7E614DA01DD00BCF612 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A019D7E614DA01DD00BCF612 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A019D7E514DA01DD00BCF612 /* RSSplitFlapSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A019D7E814DA01DD00BCF612 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A019D7E914DA01DD00BCF612 /* UIKit.framework */,
+				A019D7EB14DA01DD00BCF612 /* Foundation.framework */,
+				A019D7ED14DA01DD00BCF612 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A019D7EF14DA01DD00BCF612 /* RSSplitFlapSample */ = {
+			isa = PBXGroup;
+			children = (
+				A019D80614DA022800BCF612 /* RSSplitFlapView.h */,
+				A019D80714DA022800BCF612 /* RSSplitFlapView.m */,
+				A019D7F814DA01DD00BCF612 /* AppDelegate.h */,
+				A019D7F914DA01DD00BCF612 /* AppDelegate.m */,
+				A019D7FB14DA01DD00BCF612 /* ViewController.h */,
+				A019D7FC14DA01DD00BCF612 /* ViewController.m */,
+				A019D7FE14DA01DD00BCF612 /* ViewController.xib */,
+				A019D7F014DA01DD00BCF612 /* Supporting Files */,
+			);
+			path = RSSplitFlapSample;
+			sourceTree = "<group>";
+		};
+		A019D7F014DA01DD00BCF612 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A019D7F114DA01DD00BCF612 /* RSSplitFlapSample-Info.plist */,
+				A019D7F214DA01DD00BCF612 /* InfoPlist.strings */,
+				A019D7F514DA01DD00BCF612 /* main.m */,
+				A019D7F714DA01DD00BCF612 /* RSSplitFlapSample-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A019D7E414DA01DD00BCF612 /* RSSplitFlapSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A019D80314DA01DD00BCF612 /* Build configuration list for PBXNativeTarget "RSSplitFlapSample" */;
+			buildPhases = (
+				A019D7E114DA01DD00BCF612 /* Sources */,
+				A019D7E214DA01DD00BCF612 /* Frameworks */,
+				A019D7E314DA01DD00BCF612 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RSSplitFlapSample;
+			productName = RSSplitFlapSample;
+			productReference = A019D7E514DA01DD00BCF612 /* RSSplitFlapSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A019D7DC14DA01DD00BCF612 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A019D7DF14DA01DD00BCF612 /* Build configuration list for PBXProject "RSSplitFlapSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A019D7DA14DA01DD00BCF612;
+			productRefGroup = A019D7E614DA01DD00BCF612 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A019D7E414DA01DD00BCF612 /* RSSplitFlapSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A019D7E314DA01DD00BCF612 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A019D7F414DA01DD00BCF612 /* InfoPlist.strings in Resources */,
+				A019D80014DA01DD00BCF612 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A019D7E114DA01DD00BCF612 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A019D7F614DA01DD00BCF612 /* main.m in Sources */,
+				A019D7FA14DA01DD00BCF612 /* AppDelegate.m in Sources */,
+				A019D7FD14DA01DD00BCF612 /* ViewController.m in Sources */,
+				A019D80814DA022800BCF612 /* RSSplitFlapView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A019D7F214DA01DD00BCF612 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A019D7F314DA01DD00BCF612 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A019D7FE14DA01DD00BCF612 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A019D7FF14DA01DD00BCF612 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A019D80114DA01DD00BCF612 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		A019D80214DA01DD00BCF612 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A019D80414DA01DD00BCF612 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RSSplitFlapSample/RSSplitFlapSample-Prefix.pch";
+				INFOPLIST_FILE = "RSSplitFlapSample/RSSplitFlapSample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A019D80514DA01DD00BCF612 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RSSplitFlapSample/RSSplitFlapSample-Prefix.pch";
+				INFOPLIST_FILE = "RSSplitFlapSample/RSSplitFlapSample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A019D7DF14DA01DD00BCF612 /* Build configuration list for PBXProject "RSSplitFlapSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A019D80114DA01DD00BCF612 /* Debug */,
+				A019D80214DA01DD00BCF612 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A019D80314DA01DD00BCF612 /* Build configuration list for PBXNativeTarget "RSSplitFlapSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A019D80414DA01DD00BCF612 /* Debug */,
+				A019D80514DA01DD00BCF612 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A019D7DC14DA01DD00BCF612 /* Project object */;
+}
