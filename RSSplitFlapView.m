@@ -9,7 +9,7 @@
 #import "RSSplitFlapView.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define kAnimationDuration 1.f
+#define kAnimationDuration 5.f
 #define kDefaultPerspectivalDistance 500.f
 
 @interface RSSplitFlapView()
@@ -127,7 +127,7 @@
     CGContextClearRect(UIGraphicsGetCurrentContext(), CGRectMake(0.f, 0.f, size.width, size.height));
     
     //Shift the cordinates so we may render the bottom half
-    CGContextTranslateCTM(UIGraphicsGetCurrentContext(), 0.f, size.height);
+    CGContextTranslateCTM(UIGraphicsGetCurrentContext(), 0.f, -size.height);
     
     // Now draw the image starting half way down, to get the bottom half
     [aView.layer renderInContext:UIGraphicsGetCurrentContext()];
@@ -272,8 +272,8 @@
     [self splitView:contentView intoTopHalf:&oldImageTop bottomHalf:nil];
     
     if (nil == frontFlipAnimation) {
-        self.frontFlipAnimation = [RSSplitFlapView flipAnimationWithDuration:kAnimationDuration*.5f angle:-M_PI*.5f];
-        self.frontBackgroundFlipAnimation = [RSSplitFlapView flipAnimationWithDuration:kAnimationDuration*.5f angle:-M_PI*.5f];
+        self.frontFlipAnimation = [RSSplitFlapView flipAnimationWithDuration:kAnimationDuration*.5f angle:-M_PI_2];
+        self.frontBackgroundFlipAnimation = [RSSplitFlapView flipAnimationWithDuration:kAnimationDuration*.5f angle:-M_PI_2];
         
         self.backFlipAnimation = [RSSplitFlapView flipAnimationWithDuration:kAnimationDuration angle:-M_PI];
         self.backBackgroundFlipAnimation = [RSSplitFlapView flipAnimationWithDuration:kAnimationDuration angle:-M_PI];
@@ -282,7 +282,7 @@
     
     frontFlipLayer.contents = (id)oldImageTop.CGImage;
     topLayer.contents = (id) newImageTop.CGImage;    
-    backFlipLayer.contents = (id) [self imageByFlippingImageVertically:newImageBottom].CGImage;
+    backFlipLayer.contents = (id) newImageBottom.CGImage;//[self imageByFlippingImageVertically:newImageTop].CGImage;
 
     
     [CATransaction begin];
