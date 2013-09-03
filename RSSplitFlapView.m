@@ -9,7 +9,7 @@
 #import "RSSplitFlapView.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define kAnimationDuration 5.f
+#define kAnimationDuration 2.f
 #define kDefaultPerspectivalDistance 500.f
 
 @interface RSSplitFlapView()
@@ -19,38 +19,23 @@
 -(void)initLayers;
 -(void)splitView:(UIView*)aView intoTopHalf:(UIImage**)topImage bottomHalf:(UIImage**)bottomImage;
 
-@property (nonatomic, retain) CAAnimation* frontFlipAnimation;
-@property (nonatomic, retain) CAAnimation* frontBackgroundFlipAnimation;
-@property (nonatomic, retain) CAAnimation* backFlipAnimation;
-@property (nonatomic, retain) CAAnimation* backBackgroundFlipAnimation;
+@property (nonatomic, strong) CAAnimation* frontFlipAnimation;
+@property (nonatomic, strong) CAAnimation* frontBackgroundFlipAnimation;
+@property (nonatomic, strong) CAAnimation* backFlipAnimation;
+@property (nonatomic, strong) CAAnimation* backBackgroundFlipAnimation;
 @property (nonatomic, assign) NSUInteger imageIndex;
-@property (nonatomic, retain) UIView* nextView;
+@property (nonatomic, strong) UIView* nextView;
 
 @property (nonatomic, assign) BOOL isTransitioning;
 
-@property (nonatomic, retain) CALayer* topLayer;
-@property (nonatomic, retain) CALayer* frontFlipLayer;
-@property (nonatomic, retain) CALayer* backFlipLayer;
-@property (nonatomic, retain) CALayer* frontBackgroundFlipLayer;
-@property (nonatomic, retain) CALayer* backBackgroundFlipLayer;
+@property (nonatomic, strong) CALayer* topLayer;
+@property (nonatomic, strong) CALayer* frontFlipLayer;
+@property (nonatomic, strong) CALayer* backFlipLayer;
+@property (nonatomic, strong) CALayer* frontBackgroundFlipLayer;
+@property (nonatomic, strong) CALayer* backBackgroundFlipLayer;
 @end
 
 @implementation RSSplitFlapView
-@synthesize perspectivalDistance;
-@synthesize frontFlipAnimation;
-@synthesize frontBackgroundFlipAnimation;
-@synthesize backFlipAnimation;
-@synthesize backBackgroundFlipAnimation;
-@synthesize fadeEffectColor;
-@synthesize imageIndex;
-@synthesize nextView;
-@synthesize contentView;
-@synthesize topLayer;
-@synthesize frontFlipLayer;
-@synthesize backFlipLayer;
-@synthesize frontBackgroundFlipLayer;
-@synthesize backBackgroundFlipLayer;
-@synthesize isTransitioning;
 
 -(id)init
 {
@@ -79,28 +64,14 @@
     return self;
 }
 
--(void)dealloc
-{
-    [frontFlipAnimation release];
-    [backFlipAnimation release];
-    [frontBackgroundFlipAnimation release];
-    [backBackgroundFlipAnimation release];
-    [fadeEffectColor release];
-    [nextView release];
-    [contentView release];
-    [frontFlipLayer release];
-    [backFlipLayer release];
-    [frontBackgroundFlipLayer release];
-    [backBackgroundFlipLayer release];
-    [super dealloc];
-}
 
 -(void)setContentView:(UIView *)aContentView
 {
-    [contentView autorelease];
-    [contentView removeFromSuperview];
-    contentView = [aContentView retain];
-    [self addSubview:aContentView];
+    if (aContentView != _contentView) {
+        [_contentView removeFromSuperview];
+        _contentView = aContentView;
+        [self addSubview:aContentView];
+    }
 }
 
 #pragma mark - private Methods
@@ -119,7 +90,7 @@
     // Grab the current contents of the context as a UIImage 
     // and add it to our array
     if (topImage != nil) {
-        *topImage = [[UIGraphicsGetImageFromCurrentImageContext() retain] autorelease];
+        *topImage = UIGraphicsGetImageFromCurrentImageContext();
     }
     
     
@@ -133,7 +104,7 @@
     [aView.layer renderInContext:UIGraphicsGetCurrentContext()];
     // And store that image in the array too
     if (bottomImage != nil) {
-        *bottomImage = [[UIGraphicsGetImageFromCurrentImageContext() retain] autorelease];
+        *bottomImage = UIGraphicsGetImageFromCurrentImageContext();
     }
     
     UIGraphicsEndImageContext();
@@ -169,58 +140,58 @@
     CGSize imageSize = self.contentView.frame.size;
     
     self.topLayer = [CALayer layer];
-    topLayer.doubleSided = NO;
-    topLayer.frame = CGRectMake(0.f, 0.f, imageSize.width, imageSize.height * 0.5f);
+    _topLayer.doubleSided = NO;
+    _topLayer.frame = CGRectMake(0.f, 0.f, imageSize.width, imageSize.height * 0.5f);
     
     self.frontFlipLayer= [CALayer layer];
-    frontFlipLayer.doubleSided = NO;
-    frontFlipLayer.name = @"1";
-    frontFlipLayer.frame = CGRectMake(0.0f, 0.0f, imageSize.width, imageSize.height * 0.5f); 
-    frontFlipLayer.anchorPoint = CGPointMake(0.5f, 1.f);
-    frontFlipLayer.position = CGPointMake(frontFlipLayer.position.x, imageSize.height * 0.5f); 
-    [frontFlipLayer setMasksToBounds:NO];
+    _frontFlipLayer.doubleSided = NO;
+    _frontFlipLayer.name = @"1";
+    _frontFlipLayer.frame = CGRectMake(0.0f, 0.0f, imageSize.width, imageSize.height * 0.5f);
+    _frontFlipLayer.anchorPoint = CGPointMake(0.5f, 1.f);
+    _frontFlipLayer.position = CGPointMake(_frontFlipLayer.position.x, imageSize.height * 0.5f);
+    [_frontFlipLayer setMasksToBounds:NO];
     
     self.backFlipLayer = [CALayer layer];
-    backFlipLayer.doubleSided = YES;
-    backFlipLayer.name = @"2";
-    backFlipLayer.frame = CGRectMake(0.0f, 0.0f, imageSize.width, imageSize.height/2);
-    backFlipLayer.anchorPoint = CGPointMake(0.5f, 1.f);
-    backFlipLayer.position = CGPointMake(backFlipLayer.position.x, imageSize.height/2);
-    [backFlipLayer setMasksToBounds:NO];
+    _backFlipLayer.doubleSided = YES;
+    _backFlipLayer.name = @"2";
+    _backFlipLayer.frame = CGRectMake(0.0f, 0.0f, imageSize.width, imageSize.height/2);
+    _backFlipLayer.anchorPoint = CGPointMake(0.5f, 1.f);
+    _backFlipLayer.position = CGPointMake(_backFlipLayer.position.x, imageSize.height/2);
+    [_backFlipLayer setMasksToBounds:NO];
     
     self.frontBackgroundFlipLayer = [CALayer layer];
-    frontBackgroundFlipLayer.doubleSided = YES;
-    frontBackgroundFlipLayer.name = @"3";
-    frontBackgroundFlipLayer.frame = CGRectMake(0.0f, 0.0f, imageSize.width, imageSize.height/2);
-    frontBackgroundFlipLayer.anchorPoint = CGPointMake(0.5f, 1.f);
-    frontBackgroundFlipLayer.position = CGPointMake(frontBackgroundFlipLayer.position.x, imageSize.height/2);
+    _frontBackgroundFlipLayer.doubleSided = YES;
+    _frontBackgroundFlipLayer.name = @"3";
+    _frontBackgroundFlipLayer.frame = CGRectMake(0.0f, 0.0f, imageSize.width, imageSize.height/2);
+    _frontBackgroundFlipLayer.anchorPoint = CGPointMake(0.5f, 1.f);
+    _frontBackgroundFlipLayer.position = CGPointMake(_frontBackgroundFlipLayer.position.x, imageSize.height/2);
     //frontBackgroundFlipLayer.cornerRadius = 4.f;
-    frontBackgroundFlipLayer.backgroundColor = fadeEffectColor.CGColor;
-    [frontBackgroundFlipLayer setMasksToBounds:NO];
+    _frontBackgroundFlipLayer.backgroundColor = _fadeEffectColor.CGColor;
+    [_frontBackgroundFlipLayer setMasksToBounds:NO];
     
     self.backBackgroundFlipLayer = [CALayer layer];
-    backBackgroundFlipLayer.doubleSided = YES;
-    backBackgroundFlipLayer.name = @"4";
-    backBackgroundFlipLayer.frame = CGRectMake(0.0f, 0.0f, imageSize.width, imageSize.height/2);
-    backBackgroundFlipLayer.anchorPoint = CGPointMake(0.5f, 1.f);
-    backBackgroundFlipLayer.position = CGPointMake(backBackgroundFlipLayer.position.x, imageSize.height/2);
+    _backBackgroundFlipLayer.doubleSided = YES;
+    _backBackgroundFlipLayer.name = @"4";
+    _backBackgroundFlipLayer.frame = CGRectMake(0.0f, 0.0f, imageSize.width, imageSize.height/2);
+    _backBackgroundFlipLayer.anchorPoint = CGPointMake(0.5f, 1.f);
+    _backBackgroundFlipLayer.position = CGPointMake(_backBackgroundFlipLayer.position.x, imageSize.height/2);
     //backBackgroundFlipLayer.cornerRadius = 4.f;
-    backBackgroundFlipLayer.backgroundColor = fadeEffectColor.CGColor;
-    [backBackgroundFlipLayer setMasksToBounds:NO];
+    _backBackgroundFlipLayer.backgroundColor = _fadeEffectColor.CGColor;
+    [_backBackgroundFlipLayer setMasksToBounds:NO];
     
-    [self.layer addSublayer:topLayer];
-    [self.layer addSublayer:backBackgroundFlipLayer];
-    [self.layer addSublayer:backFlipLayer];
-    [self.layer addSublayer:frontBackgroundFlipLayer];
-    [self.layer addSublayer:frontFlipLayer];
+    [self.layer addSublayer:_topLayer];
+    [self.layer addSublayer:_backBackgroundFlipLayer];
+    [self.layer addSublayer:_backFlipLayer];
+    [self.layer addSublayer:_frontBackgroundFlipLayer];
+    [self.layer addSublayer:_frontFlipLayer];
     
     CGFloat zDistance = self.perspectivalDistance;
     CATransform3D perspective = CATransform3DIdentity; 
     perspective.m34 = -1. / zDistance;
-    frontFlipLayer.transform = perspective;
-    backFlipLayer.transform = perspective;
-    frontBackgroundFlipLayer.transform = perspective;
-    backBackgroundFlipLayer.transform = perspective;
+    _frontFlipLayer.transform = perspective;
+    _backFlipLayer.transform = perspective;
+    _frontBackgroundFlipLayer.transform = perspective;
+    _backBackgroundFlipLayer.transform = perspective;
 }
 
 
@@ -256,10 +227,10 @@
 
 - (void)flipToView:(UIView *)aView
 {
-    if (isTransitioning)
+    if (_isTransitioning)
 		return;
     
-	isTransitioning = YES;
+	_isTransitioning = YES;
     
     self.nextView = aView;
     
@@ -269,41 +240,41 @@
     UIImage* newImageTop;
     UIImage* newImageBottom;
     [self splitView:aView intoTopHalf:&newImageTop bottomHalf:&newImageBottom];
-    [self splitView:contentView intoTopHalf:&oldImageTop bottomHalf:nil];
+    [self splitView:_contentView intoTopHalf:&oldImageTop bottomHalf:nil];
     
-    if (nil == frontFlipAnimation) {
+    if (nil == _frontFlipAnimation) {
         self.frontFlipAnimation = [RSSplitFlapView flipAnimationWithDuration:kAnimationDuration*.5f angle:-M_PI_2];
         self.frontBackgroundFlipAnimation = [RSSplitFlapView flipAnimationWithDuration:kAnimationDuration*.5f angle:-M_PI_2];
         
         self.backFlipAnimation = [RSSplitFlapView flipAnimationWithDuration:kAnimationDuration angle:-M_PI];
         self.backBackgroundFlipAnimation = [RSSplitFlapView flipAnimationWithDuration:kAnimationDuration angle:-M_PI];
     }
-    backFlipAnimation.delegate = self;
+    _backFlipAnimation.delegate = self;
     
-    frontFlipLayer.contents = (id)oldImageTop.CGImage;
-    topLayer.contents = (id) newImageTop.CGImage;    
-    backFlipLayer.contents = (id) newImageBottom.CGImage;//[self imageByFlippingImageVertically:newImageTop].CGImage;
+    _frontFlipLayer.contents = (id)oldImageTop.CGImage;
+    _topLayer.contents = (id) newImageTop.CGImage;
+    _backFlipLayer.contents = (id) [self imageByFlippingImageVertically:newImageBottom].CGImage;
 
     
     [CATransaction begin];
-    [frontFlipLayer addAnimation:self.frontFlipAnimation forKey:@"flip"];
-    [frontBackgroundFlipLayer addAnimation:self.frontBackgroundFlipAnimation forKey:@"flip"];
-    [backFlipLayer addAnimation:self.backFlipAnimation forKey:@"flip"];
-    [backBackgroundFlipLayer addAnimation:self.backBackgroundFlipAnimation forKey:@"flip"];
+    [_frontFlipLayer addAnimation:self.frontFlipAnimation forKey:@"flip"];
+    [_frontBackgroundFlipLayer addAnimation:self.frontBackgroundFlipAnimation forKey:@"flip"];
+    [_backFlipLayer addAnimation:self.backFlipAnimation forKey:@"flip"];
+    [_backBackgroundFlipLayer addAnimation:self.backBackgroundFlipAnimation forKey:@"flip"];
     [CATransaction commit];
 }
 
 #pragma mark - animation delegate
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
-    isTransitioning = NO;
+    _isTransitioning = NO;
     
-    self.contentView = nextView;
+    self.contentView = _nextView;
     self.nextView = nil;
-    [frontFlipLayer removeFromSuperlayer];
-    [backFlipLayer removeFromSuperlayer];
-    [frontBackgroundFlipLayer removeFromSuperlayer];
-    [backBackgroundFlipLayer removeFromSuperlayer];
+    [_frontFlipLayer removeFromSuperlayer];
+    [_backFlipLayer removeFromSuperlayer];
+    [_frontBackgroundFlipLayer removeFromSuperlayer];
+    [_backBackgroundFlipLayer removeFromSuperlayer];
         
 }
 @end

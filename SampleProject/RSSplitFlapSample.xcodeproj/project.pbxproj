@@ -246,9 +246,11 @@
 		A019D80414DA01DD00BCF612 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RSSplitFlapSample/RSSplitFlapSample-Prefix.pch";
 				INFOPLIST_FILE = "RSSplitFlapSample/RSSplitFlapSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -257,9 +259,11 @@
 		A019D80514DA01DD00BCF612 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RSSplitFlapSample/RSSplitFlapSample-Prefix.pch";
 				INFOPLIST_FILE = "RSSplitFlapSample/RSSplitFlapSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -15,9 +15,9 @@
 @property (nonatomic, assign) CGFloat perspectivalDistance;
 
 //If our flip images have transparency, this color fills it in during an animation
-@property (nonatomic, retain) UIColor* fadeEffectColor;
+@property (nonatomic, strong) UIColor* fadeEffectColor;
 
-@property (nonatomic, retain) UIView* contentView;
+@property (nonatomic, strong) UIView* contentView;
 
 -(void)flipToView:(UIView*)aView;
 

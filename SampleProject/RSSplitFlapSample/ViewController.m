@@ -9,6 +9,9 @@
 #import "ViewController.h"
 #import "RSSplitFlapView.h"
 
+
+static NSInteger sCount = 0;
+
 @interface ViewController()
 
 -(UILabel*)splitFlapLabelWithText:(NSString*)text;
@@ -16,7 +19,6 @@
 
 @implementation ViewController
 @synthesize splitFlapView1;
-@synthesize splitFlapView2;
 
 - (void)didReceiveMemoryWarning
 {
@@ -26,9 +28,9 @@
 
 -(UILabel*)splitFlapLabelWithText:(NSString *)text
 {
-    UILabel* label = [[[UILabel alloc] init] autorelease];
+    UILabel* label = [[UILabel alloc] init];
     label.font = [UIFont boldSystemFontOfSize:220.f];
-    label.textAlignment = UITextAlignmentCenter;
+    label.textAlignment = NSTextAlignmentCenter;
     label.backgroundColor = [UIColor greenColor];
     label.text = text;
     return label;
@@ -43,14 +45,6 @@
     UILabel* label = [self splitFlapLabelWithText:@"8"];
     label.frame = CGRectMake(0.f, 0.f, splitFlapView1.bounds.size.width, splitFlapView1.bounds.size.height);
     self.splitFlapView1.contentView = label;
-}
-
-- (void)viewDidUnload
-{
-    
-    [self setSplitFlapView1:nil];
-    [self setSplitFlapView2:nil];
-    [super viewDidUnload];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -79,18 +73,21 @@
     return YES;
 }
 
-- (void)dealloc {
-    [splitFlapView1 release];
-    [splitFlapView2 release];
-    [super dealloc];
-}
 - (IBAction)onMinusButtonTapped:(id)sender {
-    static NSUInteger sCount = 0;
     UILabel* nextLabel = [self splitFlapLabelWithText:[NSString stringWithFormat:@"%u", (sCount++)%10]];
     nextLabel.frame = self.splitFlapView1.bounds;
     [self.splitFlapView1 flipToView:nextLabel];
+    if (sCount > 9) {
+        sCount = 0;
+    }
 }
 
 - (IBAction)onPlusButtonTapped:(id)sender {
+    UILabel* nextLabel = [self splitFlapLabelWithText:[NSString stringWithFormat:@"%u", (sCount--)%10]];
+    nextLabel.frame = self.splitFlapView1.bounds;
+    [self.splitFlapView1 flipToView:nextLabel];
+    if (sCount < 0) {
+        sCount = 9;
+    }
 }
 @end

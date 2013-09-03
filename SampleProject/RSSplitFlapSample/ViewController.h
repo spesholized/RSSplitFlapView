@@ -11,8 +11,8 @@
 @class RSSplitFlapView;
 @interface ViewController : UIViewController
 
-@property (retain, nonatomic) IBOutlet RSSplitFlapView *splitFlapView1;
-@property (retain, nonatomic) IBOutlet RSSplitFlapView *splitFlapView2;
+@property (strong, nonatomic) IBOutlet RSSplitFlapView *splitFlapView1;
+@property (strong, nonatomic) IBOutlet RSSplitFlapView *splitFlapView2;
 - (IBAction)onMinusButtonTapped:(id)sender;
 - (IBAction)onPlusButtonTapped:(id)sender;
 @end
