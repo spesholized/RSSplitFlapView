@@ -42,7 +42,7 @@ static NSInteger sCount = 0;
 {
     [super viewDidLoad];
     
-    UILabel* label = [self splitFlapLabelWithText:@"8"];
+    UILabel* label = [self splitFlapLabelWithText:@"0"];
     label.frame = CGRectMake(0.f, 0.f, splitFlapView1.bounds.size.width, splitFlapView1.bounds.size.height);
     self.splitFlapView1.contentView = label;
 }
@@ -74,20 +74,20 @@ static NSInteger sCount = 0;
 }
 
 - (IBAction)onMinusButtonTapped:(id)sender {
-    UILabel* nextLabel = [self splitFlapLabelWithText:[NSString stringWithFormat:@"%u", (sCount++)%10]];
+    if (--sCount < 0) {
+        sCount = 9;
+    }
+    UILabel* nextLabel = [self splitFlapLabelWithText:[NSString stringWithFormat:@"%u", sCount%10]];
     nextLabel.frame = self.splitFlapView1.bounds;
     [self.splitFlapView1 flipToView:nextLabel];
-    if (sCount > 9) {
-        sCount = 0;
-    }
 }
 
 - (IBAction)onPlusButtonTapped:(id)sender {
-    UILabel* nextLabel = [self splitFlapLabelWithText:[NSString stringWithFormat:@"%u", (sCount--)%10]];
+    if (++sCount > 9) {
+        sCount = 0;
+    }
+    UILabel* nextLabel = [self splitFlapLabelWithText:[NSString stringWithFormat:@"%u", sCount%10]];
     nextLabel.frame = self.splitFlapView1.bounds;
     [self.splitFlapView1 flipToView:nextLabel];
-    if (sCount < 0) {
-        sCount = 9;
-    }
 }
 @end
